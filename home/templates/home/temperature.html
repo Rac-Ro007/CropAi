@@ -1,0 +1,114 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% block head %}
+      <title>AgriCrop - Temperature</title>
+      <!-- Custom styles for this template-->
+      <link href="{% static 'css/weather.css' %}" rel="stylesheet">
+    {% endblock head %}
+  </head>
+ 
+  <body id="page-top">
+    {% block content %}  
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid" align="center">
+        
+        <!-- Content Row -->
+        <div class="row">
+          <div class="col-xl-8 col-lg-7">
+            
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary" align="Center">Rainfall Chart</h6>
+                </div>
+                <div class="card-body">
+                 <h2>Bangalore</h2>
+                  <br><br><br>
+                  <br>
+                  <h1>{{tday}}°</h1>
+                  <br><br>
+                  <table>
+                      <tr>
+                          <td>MON</td>
+                          <td>TUE</td>
+                          <td>WED</td>
+                          <td>THU</td>
+                          <td>FRI</td>
+                      </tr>
+                      <tr>
+                        {% for x in data %}
+                          <td>{{ x }}</td>
+                        {% endfor %}
+                      </tr>
+                  </table>
+                </div>
+              </div>
+
+
+
+          
+          </div>
+        </div>  
+
+          <!-- Content Row -->
+        <div class="row">
+          <div class="col-xl-8 col-lg-7">
+            
+            <!-- Area Chart -->
+            <div id="container">
+                <script src="https://code.highcharts.com/highcharts.js"></script>
+                <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                
+                <div id="container" style="min-width: 200px; height: 400px; margin: 0 auto"></div>
+
+                
+            <script>
+              Highcharts.chart('container', {
+                              chart: {
+                                  type: 'line'
+                              },
+                              title: {
+                                   text: 'Temperature'
+                              },
+                              xAxis: {
+                                  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                              },
+                              series: [ {
+                                  name: 'Mumbai',
+                                  data: {{data1}}
+                              }]
+                          });
+            
+          
+            </script>
+          </div>
+            <!-- Area Chart Ends Here -->  
+          </div>  
+        </div>
+
+        </div>
+        <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+
+      <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+    <!-- Page level plugins -->
+    <script src="{% static 'vendor/chart.js/Chart.min.js' %}"></script>
+    <!-- Page level custom scripts -->
+    <script src="{% static 'js/demo/chart-area-demo.js' %}"></script>
+    <script src="{% static 'js/demo/chart-pie-demo.js' %}"></script>
+
+    {% endblock %}
+  </body>
+</html>

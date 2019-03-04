@@ -1,0 +1,47 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>AgriCrop - Predict Crop</title>
+  </head>
+
+  <body id="page-top">
+    {% block content %}  
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid" align="center">
+        <!-- Page Heading -->
+        <!-- <h1 class="h3 mb-2 text-gray-800" align="center">Crop Prediction</h1> -->
+
+          <!-- Content Row -->
+          <!-- <div class="row"> -->
+
+        <div class="col-xl-8 col-lg-7" >
+
+          <!-- Area Chart -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary" align="Center">Crop Prediction</h6>
+            </div>
+            <div class="card-body">
+              <form align="center" action = "{% url 'predres-home' %}" method="POST">
+                  {% csrf_token %}
+                  <h5>Your Crop</h5>
+                  <input name = 'crop' class="btn" style="border:1px solid blue;" type="text" placeholder="Enter the crop to predict">
+                  <div align="center" style="padding:10px 5px;">
+                  <button class="btn btn-success btn-md">Predict Crop</button> 
+                  </div>
+              </form>
+            </div>
+          </div>
+          </div>>
+
+
+          </div>
+  
+    {% endblock %}
+  </body>
+</html>
